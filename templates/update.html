@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>  
+    <form action="{% url 'updateuser' id=getiduser.id %}" method="POST">
+
+        {% csrf_token %}
+
+        <div>
+            {% for message in messages%}
+
+            <i style="color: red;">{{message}}</i>
+
+            {% endfor %}
+        </div>
+
+        <br/>
+
+        <input type="number" name="userId" hidden value="{{getiduser.id}}"> 
+        <input type="text" name="" placeholder="Username" readonly value="{{getiduser.username}}"> <br>
+        <input type="email" name="email" placeholder="Email" value="{{getiduser.email}}"> <br>
+        <input type="text" name="first_name" placeholder="Firstname"  value="{{getiduser.first_name}}"> <br>
+        <input type="text" name="last_name" placeholder="Lastname" value="{{getiduser.last_name}}"> <br>
+        <button type="submit">Save Changes</button>
+    
+    </form>  
+</body>
+</html>
+

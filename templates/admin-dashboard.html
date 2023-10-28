@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'initial/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'initial/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'initial/css/style.css' %}">
+
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin</h2>
+       
+        <div style="border: 1px solid #01d28e; border-radius: 10px; padding: 10px 50px;">
+            <p>{{admin.username}}</p>
+            <p>{{admin.email}}</p>    
+
+            <p>{{username}}</p>
+            <p>{{email}}</p>  
+        
+            <p>{{loggedadmin.data.username}}</p>
+            <p>{{loggedadmin.data.email}}</p>    
+        </div>
+       
+        <div style="padding: 10px 0px;">
+            {% for message in messages %}
+
+            <i style="color: red;">{{message}}</i>
+
+            {% endfor %}
+        </div>
+
+        <div style="border: 1px solid #01d28e; border-radius: 10px; padding: 15px 50px 10px;">
+            {% for myuser in users %}
+        
+            <p>{{myuser.username}}</p>
+            <p>{{myuser.email}}</p>
+            <p>{{myuser.is_superuser}}</p>
+            <p hidden>{{myuser.id}}</p>
+
+            <br/>
+            
+            <p><a href="{% url 'gettinbyid' id=myuser.id %}">Edit</a></p>
+            <p><a href="{% url 'deleteuser' id=myuser.id %}">Delete</a></p>
+            
+
+            <hr style="color: aquamarine;">
+
+        
+            {% endfor %}
+        </div>
+
+        
+    </div>
+   
+
+
+    <script type="text/javascript" src="{% static 'initial/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'initial/js/bootstrap.min.js' %}"></script>
+    
+
+</body>
+</html>

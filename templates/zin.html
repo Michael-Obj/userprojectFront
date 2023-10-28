@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'initial/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'initial/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'initial/css/style.css' %}">
+
+    <title>User project</title>
+</head>
+<body>
+    <div class="container-fluid ">
+        <a href="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span>
+            Call : +234 8107925206
+            </span>
+        </a>
+        <a href="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span>
+            Email : michaeloluwole99@gmail.com
+            </span>
+        </a>
+        <a href="">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span>
+            Location
+            </span>
+        </a>
+    </div>
+
+    <nav style="display: inline;">
+        <ul>
+            <li><b>Home</b></li>
+            <li><a href="$">Contact</a></li>
+    
+            {% if loggeduser.data.is_authenticated %}
+            <li>Hello, {{loggeduser.data.username}} </li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+    
+            {% else %}
+            <li><a href="{% url 'registerforum' %}">Register</a></li>
+            <li><a href="{% url 'loginforum' %}">Login</a></li>
+            {% endif %}
+            
+        </ul>
+    </nav>
+
+    <h2>Happy Lifestyle</h2>
+
+    <button class="btn btn-success">school life</button>
+
+    <p>{{loggeduser.data.username}}</p>
+    <p>{{loggeduser.data.email}}</p>
+
+
+
+    <script type="text/javascript" src="{% static 'initial/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'initial/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
